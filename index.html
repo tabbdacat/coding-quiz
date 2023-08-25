@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
+    <h1>Coding Quiz</h1>
+    <div id="start-screen">
+        <h2>Can you beat the current high score? You have 2 minutes to answer all questions. Each incorrect answer will drop your remaining time by 15 seconds.</h2>
+        <div class="scores"><a href="./highscores.html">View Highscores</a></div>
+        <button id="start">Start Quiz</button>
+    </div>
+    <div id="test">
+        <h2 id="question-title"></h2>
+        <div id="choices"></div>
+    </div>
+    <div id="end-screen">
+        <h2>Quiz Complete!</h2>
+        <p>Your final score is <span id="final-score"></span></p>
+        <p>Enter initials: <input type="text" id="initials" /></p>
+        <button id="submit">Submit</button>
+
     <script src="./assets/js/script.js"></script>
 </body>
-    <h1>Coding Quiz</h1>
-        <h2>Can you beat the current high score? You have 2 minutes to answer all questions. Each incorrect answer will drop your remaining time by 15 seconds.</h2>
-        <div class="scores"><a href="highscores.html">View Highscores</a></div>
+
 
 </html>
