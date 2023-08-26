@@ -1,11 +1,15 @@
-var timeRemaining = document.querySelector(".timer");
-
+let timeRemaining = document.querySelector(".timer");
+const startBtn = document.querySelector("#start");
+const startScreenEl = document.querySelector("#start-screen");
+const questionsEl = document.querySelector("#test");
+const endScreenEl = document.querySelector("#end-screen")
 // Selects element by id
-var time = document.getElementById("time");
+let time = document.getElementById("time");
 
-var secondsLeft = 10;
 
-function setTime() {
+startBtn.addEventListener ("click", function()  {
+    // time for quiz
+    let secondsLeft = 10;
   // Sets interval in variable
   var timerInterval = setInterval(function() {
     // subtracting 1 from seconds left
@@ -18,13 +22,21 @@ function setTime() {
       clearInterval(timerInterval);
       // Calls function to send message
       sendMessage();
+
     }
 
   }, 1000);
-}
 
  function sendMessage() {
     timeRemaining.textContent = "Time is up!"
  }
 
- setTime();
+startScreenEl.classList.add("hide");
+questionsEl.classList.remove("hide");
+})
+
+endScreenElEl.classList.remove("hide");
+questionsEl.classList.add("hide");
+
+
+
