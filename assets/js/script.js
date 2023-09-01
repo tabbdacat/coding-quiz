@@ -55,14 +55,16 @@ questionsEl.classList.remove("hide");
 
 // let questions = [  
 //     {
+      // numb: 1,
 //     question: "why is the sky blue?",
-//     answer1: ["cuz sad","cuz space","cuz i said so"]
-//     answer2: ["cuz i'm right"]
+//     options: ["cuz sad","cuz space","cuz i said so","cuz i'm right"]
+//     answer: "cuz i'm right"
 //     }
 //     {
+  //    numb: 2,
 //     question: "why not?",
-//     answer1: ["dunno", "shrug","ahhh"]
-//     answer2: ["cuz i'm right"]
+//     options: ["dunno", "shrug","ahhh","cuz i'm right"]
+//     answer: "cuz i'm right"
 //         }
 // ]
 // var a = document.querySelector("#a")
