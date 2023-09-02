@@ -5,18 +5,10 @@ const questionsEl = document.querySelector("#test");
 const endScreenEl = document.querySelector("#end-screen");
 // Selects element by id
 let time = document.getElementById("time");
+let questions = document.querySelector('#questions');
+let optionBtns = document.querySelectorAll('.optionBtn');
+let currentQuestionIndex = 0;
 
-let scoreListText = document.createElement("li");
-const highScoreForm = document.querySelector("#high-score-form");
-const initialInputEl = document.querySelector("#initial-input");
-const submitScoreBtn = document.querySelector("#submit-score-btn");
-
-
-// submitScoreBtn.addEventListener ("click", function (event) {
-//   event.preventDefault();
-//   const highScoreList = document.querySelector(".high-score-list").textContent(initialInputEl.value)
-// highScoreForm.appendChild(highScoreList)
-// })
 
 
 startBtn.addEventListener ("click", function()  {
@@ -29,7 +21,7 @@ startBtn.addEventListener ("click", function()  {
 
     timeRemaining.textContent = secondsLeft + " seconds left.";
 
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Calls function to send message
@@ -41,39 +33,77 @@ startBtn.addEventListener ("click", function()  {
 
  function sendMessage() {
     timeRemaining.textContent = "Time is up!"
+    
  }
 
 startScreenEl.classList.add("hide");
 questionsEl.classList.remove("hide");
+displayQuestion(currentQuestionIndex);
 })
 
 
+// if all questions completed, or no time remaining, end test
 // where does this go??
 // endScreenElEl.classList.remove("hide");
 // questionsEl.classList.add("hide");
 
-let questions = document.querySelector('#questions');
-let options = document.querySelector('options');
-let currentQuestionIndex = 0;
+
 
 // question list object
-// let myQuestions = [  
-//     {
-      // numb: 1,
-//     question: "why is the sky blue?",
-//     options: ["cuz sad","cuz space","cuz i said so","cuz i'm right"]
-//     answer: "cuz i'm right"
-//     }
-//     {
-  //    numb: 2,
-//     question: "why not?",
-//     options: ["dunno", "shrug","ahhh","cuz i'm right"]
-//     answer: "cuz i'm right"
-//         }
-// ]
+let myQuestions = [  
+    {
+    quest: "why is the sky blue?",
+    options: ["cuz sad","cuz space","cuz i said so","cuz i'm right"],
+    answer: "cuz i'm right",
+    },
+    {
+    quest: "why not?",
+    options: ["dunno", "shrug","ahhh","cuz i'm right"],
+    answer: "cuz i'm right",
+        }
+]
 
-// function displayNextQuestion() {}
+function displayQuestion(i) {
+  let currentQuestionText = myQuestions[i].quest;
+  questions.textContent = currentQuestionText;
+  optionBtns[0].textContent = myQuestions[i].options[0];
+  optionBtns[1].textContent = myQuestions[i].options[1];
+  optionBtns[2].textContent = myQuestions[i].options[2];
+  optionBtns[3].textContent = myQuestions[i].options[3];
+}
+
+
+
+
+// give each option a button
+
+// function answerClick {
+// 
+// }
+
+// if (options === answer) {
+  // display message of correct answer
+// }
+// else {
+  // display message of incorrect answer
+
+  // deduct time from timer
+  // secondsLeft = secondsLeft - 5;
+// }
+
+
 
 
 
 const numHighScores = 10;
+let scoreListText = document.createElement("li");
+const highScoreForm = document.querySelector("#high-score-form");
+const initialInputEl = document.querySelector("#initial-input");
+const submitScoreBtn = document.querySelector("#submit-score-btn");
+
+
+// submitScoreBtn.addEventListener ("click", function (event) {
+//   event.preventDefault();
+//   const highScoreList = document.querySelector(".high-score-list").textContent(initialInputEl.value)
+// highScoreForm.appendChild(highScoreList)
+// })
