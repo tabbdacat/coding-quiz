@@ -52,8 +52,12 @@ questionsEl.classList.remove("hide");
 // endScreenElEl.classList.remove("hide");
 // questionsEl.classList.add("hide");
 
+let questions = document.querySelector('#questions');
+let options = document.querySelector('options');
+let currentQuestionIndex = 0;
 
-// let questions = [  
+// question list object
+// let myQuestions = [  
 //     {
       // numb: 1,
 //     question: "why is the sky blue?",
@@ -67,8 +71,9 @@ questionsEl.classList.remove("hide");
 //     answer: "cuz i'm right"
 //         }
 // ]
-// var a = document.querySelector("#a")
-// var b = document.querySelector("#b")
-// var c = document.querySelector("#c")
-// var d = document.querySelector("#d")
 
+// function displayNextQuestion() {}
+
+
+
+const numHighScores = 10;
