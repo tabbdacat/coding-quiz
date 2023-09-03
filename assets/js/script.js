@@ -11,17 +11,17 @@ let currentQuestionIndex = 0;
 
 
 
-startBtn.addEventListener ("click", function()  {
-    // time for quiz
-    let secondsLeft = 10;
+startBtn.addEventListener("click", function () {
+  // time for quiz
+  let secondsLeft = 10;
   // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function () {
     // subtracting 1 from seconds left
     secondsLeft--;
 
     timeRemaining.textContent = secondsLeft + " seconds left.";
 
-    if(secondsLeft <= 0) {
+    if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Calls function to send message
@@ -31,14 +31,14 @@ startBtn.addEventListener ("click", function()  {
 
   }, 1000);
 
- function sendMessage() {
+  function sendMessage() {
     timeRemaining.textContent = "Time is up!"
-    
- }
 
-startScreenEl.classList.add("hide");
-questionsEl.classList.remove("hide");
-displayQuestion(currentQuestionIndex);
+  }
+
+  startScreenEl.classList.add("hide");
+  questionsEl.classList.remove("hide");
+  displayQuestion(currentQuestionIndex);
 })
 
 
@@ -50,17 +50,17 @@ displayQuestion(currentQuestionIndex);
 
 
 // question list object
-let myQuestions = [  
-    {
+let myQuestions = [
+  {
     quest: "why is the sky blue?",
-    options: ["cuz sad","cuz space","cuz i said so","cuz i'm right"],
+    options: ["cuz sad", "cuz space", "cuz i said so", "cuz i'm right"],
     answer: "cuz i'm right",
-    },
-    {
+  },
+  {
     quest: "why not?",
-    options: ["dunno", "shrug","ahhh","cuz i'm right"],
+    options: ["dunno", "shrug", "ahhh", "cuz i'm right"],
     answer: "cuz i'm right",
-        }
+  }
 ]
 
 function displayQuestion(i) {
@@ -72,7 +72,16 @@ function displayQuestion(i) {
   optionBtns[3].textContent = myQuestions[i].options[3];
 }
 
+btn0 = document.querySelector('#btn0');
 
+optionBtns.forEach(function (i) {
+
+  i.addEventListener("click", function () {
+    currentQuestionIndex += 1;
+    displayQuestion(currentQuestionIndex);
+  })
+
+});
 
 
 // give each option a button
@@ -82,13 +91,13 @@ function displayQuestion(i) {
 // }
 
 // if (options === answer) {
-  // display message of correct answer
+// display message of correct answer
 // }
 // else {
-  // display message of incorrect answer
+// display message of incorrect answer
 
-  // deduct time from timer
-  // secondsLeft = secondsLeft - 5;
+// deduct time from timer
+// secondsLeft = secondsLeft - 5;
 // }
 
 
