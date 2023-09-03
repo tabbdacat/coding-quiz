@@ -42,13 +42,6 @@ startBtn.addEventListener("click", function () {
 })
 
 
-// if all questions completed, or no time remaining, end test
-// where does this go??
-// endScreenElEl.classList.remove("hide");
-// questionsEl.classList.add("hide");
-
-
-
 // question list object
 let myQuestions = [
   {
@@ -58,48 +51,58 @@ let myQuestions = [
   },
   {
     quest: "why not?",
-    options: ["dunno", "shrug", "ahhh", "cuz i'm right"],
+    options: ["dunno", "cuz i'm right", "shrug", "ahhh"],
     answer: "cuz i'm right",
+  },
+  {
+    quest: "whyyyyyyy?",
+    options: ["not sure", "cuz i'm right", "shrug", "ahhh"],
+    answer: "cuz i'm right",
+
+    
   }
 ]
 
 function displayQuestion(i) {
   let currentQuestionText = myQuestions[i].quest;
+
+
+
   questions.textContent = currentQuestionText;
   optionBtns[0].textContent = myQuestions[i].options[0];
   optionBtns[1].textContent = myQuestions[i].options[1];
   optionBtns[2].textContent = myQuestions[i].options[2];
   optionBtns[3].textContent = myQuestions[i].options[3];
+
+//   if (currentQuestionIndex >= myQuestions[i].length) {
+
+//     endScreenElEl.classList.remove("hide");
+//  questionsEl.classList.add("hide");
+//   }
 }
 
-btn0 = document.querySelector('#btn0');
 
-optionBtns.forEach(function (i) {
+optionBtns.forEach(function (x) {
 
-  i.addEventListener("click", function () {
-    currentQuestionIndex += 1;
+  x.addEventListener("click", function () {
+    currentQuestionIndex ++;
     displayQuestion(currentQuestionIndex);
+
+  //   function rightOrWrong(event) {
+
+  //     optionBtns.onClick = event.target;
+  //   if (optionBtns.textContent === myQuestions[currentQuestionIndex].answer.textContent) {
+  //     prompt("That's correct!");
+  //   } else {
+  //     prompt("Wrong Answer!");
+  // secondsLeft = secondsLeft - 5;
+  //   }
+  // console.log(optionBtns.textContent)
+  // })
   })
 
+
 });
-
-
-// give each option a button
-
-// function answerClick {
-// 
-// }
-
-// if (options === answer) {
-// display message of correct answer
-// }
-// else {
-// display message of incorrect answer
-
-// deduct time from timer
-// secondsLeft = secondsLeft - 5;
-// }
-
 
 
 

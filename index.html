@@ -22,10 +22,12 @@
         <h2 id="questions"></h2>
 
         <div id="options">
-            <button class="optionBtn" id="btn0"></button>
             <button class="optionBtn"></button>
             <button class="optionBtn"></button>
             <button class="optionBtn"></button>
+            <button class="optionBtn"></button>
+            <h3 class="hide">That's Correct!</h3>
+            <h3 class="hide">Wrong Answer!</h3>
         </div>
             
            
@@ -33,8 +35,14 @@
     <div id="end-screen" class="hide">
         <h2>Quiz Complete!</h2>
         <p>Your final score is <span id="final-score"></span></p>
-        <p>Enter initials: <input type="text" id="initials" /></p>
-        <button id="submit">Submit</button>
+        <form id="high-score-form">
+
+            <ol id="high-score-list">
+             
+            </ol>
+        </form>
+        <p>Enter initials: <input type="text" id="initial-input" placeholder="Initials"/></p>
+        <button id="submit-score-btn">Submit</button>
     </div>
 
     <script src="./assets/js/script.js"></script>
