@@ -8,14 +8,14 @@ let time = document.getElementById("time");
 let questions = document.querySelector('#questions');
 let optionBtns = document.querySelectorAll('.optionBtn');
 let currentQuestionIndex = 0;
-
+let secondsLeft;
 
 
 startBtn.addEventListener("click", function () {
   // time for quiz
-  let secondsLeft = 10;
+  secondsLeft = 100;
   // Sets interval in variable
-  var timerInterval = setInterval(function () {
+  let timerInterval = setInterval(function () {
     // subtracting 1 from seconds left
     secondsLeft--;
 
@@ -74,31 +74,44 @@ function displayQuestion(i) {
   optionBtns[2].textContent = myQuestions[i].options[2];
   optionBtns[3].textContent = myQuestions[i].options[3];
 
-//   if (currentQuestionIndex >= myQuestions[i].length) {
+  if (currentQuestionIndex >= myQuestions[i].length) {
 
-//     endScreenElEl.classList.remove("hide");
-//  questionsEl.classList.add("hide");
-//   }
+    endScreenEl.classList.remove("hide");
+ questionsEl.classList.add("hide");
+ 
+  }
 }
 
 
 optionBtns.forEach(function (x) {
 
-  x.addEventListener("click", function () {
+  x.addEventListener("click", function (e) {
+          if (e.target.textContent === myQuestions[currentQuestionIndex].answer) {
+        alert("That's correct!");
+       
+        
+      } else {
+        alert("Wrong Answer! 10 seconds deducted from timer.");
+        secondsLeft = secondsLeft - 10;
+      }
+    
     currentQuestionIndex ++;
+
+    if (currentQuestionIndex >= myQuestions.length) {
+
+      endScreenEl.classList.remove("hide");
+   questionsEl.classList.add("hide");
+ 
+   return
+    }
+
     displayQuestion(currentQuestionIndex);
+    //function rightOrWrong() {
+      //optionBtns.onClick = event.target;
 
-  //   function rightOrWrong(event) {
 
-  //     optionBtns.onClick = event.target;
-  //   if (optionBtns.textContent === myQuestions[currentQuestionIndex].answer.textContent) {
-  //     prompt("That's correct!");
-  //   } else {
-  //     prompt("Wrong Answer!");
-  // secondsLeft = secondsLeft - 5;
-  //   }
-  // console.log(optionBtns.textContent)
-  // })
+
+    //}
   })
 
 

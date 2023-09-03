@@ -10,22 +10,24 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <h1>Coding Quiz</h1>
-    <div class="timer">Time: <span id="time">0</span></div>
+    <header class="row justify-content-center m-4">
+        <h1 class="col-9">Coding Quiz</h1>
+    <div class="col-3 timer">Time: <span id="time">0</span></div>
     <div id="start-screen">
-        <h2>Can you beat the current high score? You have 2 minutes to answer all questions. 
-            Each incorrect answer will drop your remaining time by 15 seconds.</h2>
-        <div class="scores"><a href="./highscores.html">View Highscores</a></div>
+        <h3 class="m-5">Can you beat the current high score? You have 2 minutes to answer all questions. 
+            Each incorrect answer will drop your remaining time by 10 seconds.</h3>
         <button class="btn btn-block btn-success w-50" id="start">Start Quiz</button>
+        <div class="scores"><a href="./highscores.html">View Highscores</a></div>
     </div>
+</header>
     <div id="test" class="hide">
         <h2 id="questions"></h2>
 
         <div id="options">
-            <button class="optionBtn"></button>
-            <button class="optionBtn"></button>
-            <button class="optionBtn"></button>
-            <button class="optionBtn"></button>
+            <button class="optionBtn" id="optionOne"></button>
+            <button class="optionBtn" id="optionTwo"></button>
+            <button class="optionBtn" id="optionThree"></button>
+            <button class="optionBtn" id="optionFour"></button>
             <h3 class="hide">That's Correct!</h3>
             <h3 class="hide">Wrong Answer!</h3>
         </div>
