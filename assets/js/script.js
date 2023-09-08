@@ -21,33 +21,20 @@ startBtn.addEventListener("click", function () {
 
     timeRemaining.textContent = secondsLeft + " seconds left.";
 
-    if (secondsLeft <= 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to send message
-      sendMessage();
-
-    }
-
-    // if (currentQuestionIndex >= myQuestions[i].length) {
- 
-    //   clearInterval(timerInterval);
-    // }
-
   }, 1000);
 
-  function sendMessage() {
-    timeRemaining.textContent = "Time is up!"
 
-    clearInterval(timerInterval);
-  }
 
   startScreenEl.classList.add("hide");
   questionsEl.classList.remove("hide");
   displayQuestion(currentQuestionIndex);
 })
 
+function sendMessage() {
+  timeRemaining.textContent = "Time is up!"
 
+  clearInterval(timerInterval);
+}
 
 // question list object
 let myQuestions = [
@@ -73,7 +60,7 @@ let myQuestions = [
 function displayQuestion(i) {
   let currentQuestionText = myQuestions[i].quest;
 
-
+  endOfQuiz()
 
   questions.textContent = currentQuestionText;
   optionBtns[0].textContent = myQuestions[i].options[0];
@@ -88,6 +75,30 @@ function displayQuestion(i) {
  
   }
 }
+function endOfQuiz() {
+  if (secondsLeft <= 0) {
+    // Stops execution of action at set interval
+    clearInterval(timerInterval);
+    // Calls function to send message
+    sendMessage();
+
+  }
+console.log(currentQuestionIndex,myQuestions.length);
+  if (currentQuestionIndex === myQuestions.length) {
+
+    clearInterval(timerInterval);
+  }
+}
+
+
+const rightAnswer= document.querySelector("#right-answer");
+
+function correct() {
+  rightAnswer.classList.remove("hide");
+}
+function removeCorrect() {
+  rightAnswer.classList.remove("hide");
+}
 
 
 optionBtns.forEach(function (x) {
@@ -95,6 +106,8 @@ optionBtns.forEach(function (x) {
   x.addEventListener("click", function (e) {
           if (e.target.textContent === myQuestions[currentQuestionIndex].answer) {
         alert("That's correct!");
+        // setTimeout(correct(), 1000);
+        // setTimeout(removeCorrect(), 1000);
       } else {
         alert("Wrong Answer! 10 seconds deducted from timer.");
         secondsLeft = secondsLeft - 10;
@@ -113,19 +126,14 @@ optionBtns.forEach(function (x) {
   })
 });
 
-let curScoreEl = document.querySelector("#cur-score");
 
-function displayCurScore (x) {
-curScoreEl = x;
-console.log(curScoreEl);
-}
 
 const numHighScores = 10;
 const highScoreForm = document.querySelector("#high-score-form");
 const initialInputEl = document.querySelector("#initial-input");
 const submitScoreBtn = document.querySelector("#submit-score-btn");
 const highScoreList = document.querySelector("#high-score-list");
-const topScores = document.querySelectorAll(".topScores");
+const curScore = document.querySelector("#cur-score");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 const clearHistoryBtn = document.querySelector("#clearHistoryBtn");
 
@@ -134,16 +142,14 @@ submitScoreBtn.addEventListener ("click", function (event) {
   event.preventDefault();
 console.log('clicked');
   // displayHighScores();
-  renderHighScores();
+
+  localStorage.setItem("initials", initialInputEl);
+localStorage.setItem("score", curScore);
+  submitHighScores();
   
 
 
 })
-
-
-// let initials = "";
-// let curScore = 10;
-
 
 
 // function updateHighScores(initialInput, curScore) {
@@ -156,30 +162,25 @@ console.log('clicked');
   
 // }
 
-// function displayHighScores () {
-//   var testHighScores = [1, 2, 3, 4, 5];
-//   for(i=0; i < topScores.length; i++) {
-//       topScores[i].innerHTML = highScores[i].initials + " "  + highScores[i].score;
-//       console.log("test");
-//   }
-// } 
-var initialArr = [];
 
 
-function renderHighScores() {
+function submitHighScores() {
+  let initialArr = [];
+  let scoreArr = [];
   highScoreList.innerHTML = "";
   // creates variable for value input of initials entered, minus white spaces
   var initialText = initialInputEl.value.trim();
-console.log(initialText);
+  let curScore = secondsLeft;
+//   console.log(initialText,secondsLeft);
 
 // for (var i = 0; i < initialArr.length; i++) {
 //   // create variable for current initial in iteration
 //   var initial = InitialArr[i];
 
 //   console.log(initial);
-// // adds input to initial array
+// adds input to initial array
   initialArr.push(initialText);
-  // creates list item
+// creates list item
 var li =document.createElement("li");  
 // setting text of the li to the current initial entered
 li.textContent = initialText;
@@ -187,17 +188,14 @@ li.textContent = initialText;
 highScoreList.appendChild(li);
 
 console.log(li);
-
-li.setAttribute("data-index", i);
-// }
 }
 
 
 clearHistoryBtn.addEventListener ("click", function() {
   localStorage.clear();
 });
-
-
-function init() {
-  renderHighScores();
 }
+
+// function init() {
+//   renderHighScores();
+// }
