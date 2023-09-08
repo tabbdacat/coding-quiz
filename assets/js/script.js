@@ -4,7 +4,7 @@ const startScreenEl = document.querySelector("#start-screen");
 const questionsEl = document.querySelector("#test");
 const endScreenEl = document.querySelector("#end-screen");
 // Selects element by id
-let time = document.getElementById("time");
+let time = document.getElementById("#time");
 let questions = document.querySelector('#questions');
 let optionBtns = document.querySelectorAll('.optionBtn');
 let currentQuestionIndex = 0;
@@ -22,7 +22,6 @@ startBtn.addEventListener("click", function () {
     timeRemaining.textContent = secondsLeft + " seconds left.";
 
   }, 1000);
-
 
 
   startScreenEl.classList.add("hide");
@@ -60,21 +59,14 @@ let myQuestions = [
 function displayQuestion(i) {
   let currentQuestionText = myQuestions[i].quest;
 
-  endOfQuiz()
-
   questions.textContent = currentQuestionText;
   optionBtns[0].textContent = myQuestions[i].options[0];
   optionBtns[1].textContent = myQuestions[i].options[1];
   optionBtns[2].textContent = myQuestions[i].options[2];
   optionBtns[3].textContent = myQuestions[i].options[3];
-
-  if (currentQuestionIndex >= myQuestions[i].length) {
-
-    endScreenEl.classList.remove("hide");
- questionsEl.classList.add("hide");
- 
   }
-}
+
+
 function endOfQuiz() {
   if (secondsLeft <= 0) {
     // Stops execution of action at set interval
@@ -84,10 +76,7 @@ function endOfQuiz() {
 
   }
 console.log(currentQuestionIndex,myQuestions.length);
-  if (currentQuestionIndex === myQuestions.length) {
 
-    clearInterval(timerInterval);
-  }
 }
 
 
@@ -125,7 +114,6 @@ optionBtns.forEach(function (x) {
     displayQuestion(currentQuestionIndex);
   })
 });
-
 
 
 const numHighScores = 10;
@@ -194,7 +182,7 @@ console.log(li);
 clearHistoryBtn.addEventListener ("click", function() {
   localStorage.clear();
 });
-}
+
 
 // function init() {
 //   renderHighScores();
