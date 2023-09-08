@@ -21,6 +21,13 @@ startBtn.addEventListener("click", function () {
 
     timeRemaining.textContent = secondsLeft + " seconds left.";
 
+    if (secondsLeft <= 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      // Calls function to send message
+      sendMessage();
+  
+    }
   }, 1000);
 
 
@@ -31,8 +38,6 @@ startBtn.addEventListener("click", function () {
 
 function sendMessage() {
   timeRemaining.textContent = "Time is up!"
-
-  clearInterval(timerInterval);
 }
 
 // question list object
@@ -67,28 +72,15 @@ function displayQuestion(i) {
   }
 
 
-function endOfQuiz() {
-  if (secondsLeft <= 0) {
-    // Stops execution of action at set interval
-    clearInterval(timerInterval);
-    // Calls function to send message
-    sendMessage();
 
-  }
-console.log(currentQuestionIndex,myQuestions.length);
+// const rightAnswer= document.querySelector("#right-answer");
 
-}
-
-
-const rightAnswer= document.querySelector("#right-answer");
-
-function correct() {
-  rightAnswer.classList.remove("hide");
-}
-function removeCorrect() {
-  rightAnswer.classList.remove("hide");
-}
-
+// function correct() {
+//   rightAnswer.classList.remove("hide");
+// }
+// function removeCorrect() {
+//   rightAnswer.classList.remove("hide");
+// }
 
 optionBtns.forEach(function (x) {
 
@@ -104,10 +96,10 @@ optionBtns.forEach(function (x) {
     
     currentQuestionIndex ++;
 
+    
     if (currentQuestionIndex >= myQuestions.length) {
-
-      endScreenEl.classList.remove("hide");
-   questionsEl.classList.add("hide");
+      endOfQuiz()
+ 
  
    return
     }
@@ -115,6 +107,13 @@ optionBtns.forEach(function (x) {
   })
 });
 
+
+function endOfQuiz() {
+  endScreenEl.classList.remove("hide");
+  questionsEl.classList.add("hide");
+  curScore.textContent = secondsLeft;
+  secondsLeft = 0;
+}
 
 const numHighScores = 10;
 const highScoreForm = document.querySelector("#high-score-form");
@@ -132,25 +131,22 @@ console.log('clicked');
   // displayHighScores();
 
   localStorage.setItem("initials", initialInputEl);
-localStorage.setItem("score", curScore);
+  localStorage.setItem("score", curScore);
   submitHighScores();
-  
+  updateHighScores(initialInputEl.value, JSON.parse(curScore.textContent));
 
 
 })
 
+function updateHighScores(initialInput, curScore) {
+  const result = {initials: initialInput, score: curScore};
 
-// function updateHighScores(initialInput, curScore) {
-//   const result = {initials: initialInput, score: curScore};
-
-//   highScores.push(result);
-//   highScores.sort((a, b) => b.score - a.score)
-//   highScores.splice(5);
-//   localStorage.setItem("highScores", JSON.stringify(highScores));
-  
-// }
-
-
+  highScores.push(result);
+  highScores.sort((a, b) => b.score - a.score)
+  highScores.splice(5);
+  console.log(highScores);
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+}
 
 function submitHighScores() {
   let initialArr = [];
@@ -158,7 +154,7 @@ function submitHighScores() {
   highScoreList.innerHTML = "";
   // creates variable for value input of initials entered, minus white spaces
   var initialText = initialInputEl.value.trim();
-  let curScore = secondsLeft;
+
 //   console.log(initialText,secondsLeft);
 
 // for (var i = 0; i < initialArr.length; i++) {
