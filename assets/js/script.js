@@ -29,10 +29,10 @@ startBtn.addEventListener("click", function () {
 
     }
 
-    if (currentQuestionIndex >= myQuestions[i].length) {
+    // if (currentQuestionIndex >= myQuestions[i].length) {
  
-      clearInterval(timerInterval);
-    }
+    //   clearInterval(timerInterval);
+    // }
 
   }, 1000);
 
@@ -132,42 +132,72 @@ const clearHistoryBtn = document.querySelector("#clearHistoryBtn");
 
 submitScoreBtn.addEventListener ("click", function (event) {
   event.preventDefault();
-  displayHighScores();
+console.log('clicked');
+  // displayHighScores();
+  renderHighScores();
   
-  event.preventDefault();
-  console.log(initialInputEl.value);
 
-  scoreListText.textContent = initialInputEl.value;
-
-  console.log(highScoreList);
-highScoreList.appendChild(highScoreForm.value);
 
 })
 
 
-let initials = "";
-let curScore = 10;
+// let initials = "";
+// let curScore = 10;
 
 
 
-function updateHighScores(initialInput, curScore) {
-  const result = {initials: initialInput, score: curScore};
+// function updateHighScores(initialInput, curScore) {
+//   const result = {initials: initialInput, score: curScore};
 
-  highScores.push(result);
-  highScores.sort((a, b) => b.score - a.score)
-  highScores.splice(5);
-  localStorage.setItem("highScores", JSON.stringify(highScores));
+//   highScores.push(result);
+//   highScores.sort((a, b) => b.score - a.score)
+//   highScores.splice(5);
+//   localStorage.setItem("highScores", JSON.stringify(highScores));
   
+// }
+
+// function displayHighScores () {
+//   var testHighScores = [1, 2, 3, 4, 5];
+//   for(i=0; i < topScores.length; i++) {
+//       topScores[i].innerHTML = highScores[i].initials + " "  + highScores[i].score;
+//       console.log("test");
+//   }
+// } 
+var initialArr = [];
+
+
+function renderHighScores() {
+  highScoreList.innerHTML = "";
+  // creates variable for value input of initials entered, minus white spaces
+  var initialText = initialInputEl.value.trim();
+console.log(initialText);
+
+// for (var i = 0; i < initialArr.length; i++) {
+//   // create variable for current initial in iteration
+//   var initial = InitialArr[i];
+
+//   console.log(initial);
+// // adds input to initial array
+  initialArr.push(initialText);
+  // creates list item
+var li =document.createElement("li");  
+// setting text of the li to the current initial entered
+li.textContent = initialText;
+// places list item in high score list
+highScoreList.appendChild(li);
+
+console.log(li);
+
+li.setAttribute("data-index", i);
+// }
 }
 
-function displayHighScores () {
-  var testHighScores = [1, 2, 3, 4, 5];
-  for(i=0; i < topScores.length; i++) {
-      topScores[i].innerHTML = highScores[i].initials + " "  + highScores[i].score;
-      console.log("test");
-  }
-} 
 
 clearHistoryBtn.addEventListener ("click", function() {
   localStorage.clear();
 });
+
+
+function init() {
+  renderHighScores();
+}
