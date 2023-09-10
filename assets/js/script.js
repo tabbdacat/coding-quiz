@@ -26,7 +26,7 @@ startBtn.addEventListener("click", function () {
       clearInterval(timerInterval);
       // Calls function to send message
       sendMessage();
-  
+
     }
   }, 1000);
 
@@ -57,7 +57,7 @@ let myQuestions = [
     options: ["not sure", "cuz i'm right", "shrug", "ahhh"],
     answer: "cuz i'm right",
 
-    
+
   }
 ]
 
@@ -69,7 +69,7 @@ function displayQuestion(i) {
   optionBtns[1].textContent = myQuestions[i].options[1];
   optionBtns[2].textContent = myQuestions[i].options[2];
   optionBtns[3].textContent = myQuestions[i].options[3];
-  }
+}
 
 
 
@@ -85,23 +85,23 @@ function displayQuestion(i) {
 optionBtns.forEach(function (x) {
 
   x.addEventListener("click", function (e) {
-          if (e.target.textContent === myQuestions[currentQuestionIndex].answer) {
-        alert("That's correct!");
-        // setTimeout(correct(), 1000);
-        // setTimeout(removeCorrect(), 1000);
-      } else {
-        alert("Wrong Answer! 10 seconds deducted from timer.");
-        secondsLeft = secondsLeft - 10;
-      }
-    
-    currentQuestionIndex ++;
+    if (e.target.textContent === myQuestions[currentQuestionIndex].answer) {
+      alert("That's correct!");
+      // setTimeout(correct(), 1000);
+      // setTimeout(removeCorrect(), 1000);
+    } else {
+      alert("Wrong Answer! 10 seconds deducted from timer.");
+      secondsLeft = secondsLeft - 10;
+    }
 
-    
+    currentQuestionIndex++;
+
+
     if (currentQuestionIndex >= myQuestions.length) {
       endOfQuiz()
- 
- 
-   return
+
+
+      return
     }
     displayQuestion(currentQuestionIndex);
   })
@@ -125,9 +125,9 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 const clearHistoryBtn = document.querySelector("#clearHistoryBtn");
 
 
-submitScoreBtn.addEventListener ("click", function (event) {
+submitScoreBtn.addEventListener("click", function (event) {
   event.preventDefault();
-console.log('clicked');
+  console.log('clicked');
   // displayHighScores();
 
   localStorage.setItem("initials", initialInputEl);
@@ -139,7 +139,7 @@ console.log('clicked');
 })
 
 function updateHighScores(initialInput, curScore) {
-  const result = {initials: initialInput, score: curScore};
+  const result = { initials: initialInput, score: curScore };
 
   highScores.push(result);
   highScores.sort((a, b) => b.score - a.score)
@@ -155,27 +155,27 @@ function submitHighScores() {
   // creates variable for value input of initials entered, minus white spaces
   var initialText = initialInputEl.value.trim();
 
-//   console.log(initialText,secondsLeft);
+  //   console.log(initialText,secondsLeft);
 
-// for (var i = 0; i < initialArr.length; i++) {
-//   // create variable for current initial in iteration
-//   var initial = InitialArr[i];
+  // for (var i = 0; i < initialArr.length; i++) {
+  //   // create variable for current initial in iteration
+  //   var initial = InitialArr[i];
 
-//   console.log(initial);
-// adds input to initial array
+  //   console.log(initial);
+  // adds input to initial array
   initialArr.push(initialText);
-// creates list item
-var li =document.createElement("li");  
-// setting text of the li to the current initial entered
-li.textContent = initialText;
-// places list item in high score list
-highScoreList.appendChild(li);
+  // creates list item
+  var li = document.createElement("li");
+  // setting text of the li to the current initial entered
+  li.textContent = "Score:" + curScore.textContent + "  Name:" + initialText;
+  // places list item in high score list
+  highScoreList.appendChild(li);
 
-console.log(li);
+  console.log(li);
 }
 
 
-clearHistoryBtn.addEventListener ("click", function() {
+clearHistoryBtn.addEventListener("click", function () {
   localStorage.clear();
 });
 
