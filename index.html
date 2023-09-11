@@ -9,14 +9,14 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body>
+<body class="bg-success-subtle">
     <header class="row justify-content-center m-4">
         <h1 class="col-9">Coding Quiz</h1>
     <div class="col-3 timer">Time: <span id="time">0</span></div>
     <div id="start-screen">
         <h3 class="m-5">Can you beat the current high score? You have 2 minutes to answer all questions. 
             Each incorrect answer will drop your remaining time by 10 seconds.</h3>
-        <button class="btn btn-block btn-success w-50" id="start">Start Quiz</button>
+        <button class="btn btn-block btn-success w-50 shadow p-3 m-2 rounded" id="start">Start Quiz</button>
         <div class="scores"><a href="./highscores.html">View Highscores</a></div>
     </div>
 </header>
@@ -24,10 +24,10 @@
         <h2 id="questions"></h2>
 
         <div id="options">
-            <button class="optionBtn" id="optionOne"></button>
-            <button class="optionBtn" id="optionTwo"></button>
-            <button class="optionBtn" id="optionThree"></button>
-            <button class="optionBtn" id="optionFour"></button>
+            <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionOne"></button>
+            <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionTwo"></button>
+            <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionThree"></button>
+            <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionFour"></button>
             <h3 id="right-answer"  class="hide">That's Correct!</h3>
             <h3 id="wrong-answer" class="hide">Wrong Answer!</h3>
         </div>

@@ -43,9 +43,9 @@ function sendMessage() {
 // question list object
 let myQuestions = [
   {
-    quest: "why is the sky blue?",
-    options: ["cuz sad", "cuz space", "cuz i said so", "cuz i'm right"],
-    answer: "cuz i'm right",
+    quest: "Which of the following function of Array object adds one or more elements to the end of an array and returns the new length of the array?",
+    options: ["A - shift()", "B - push()", "C - join()", "D - add()"],
+    answer: "B - push()",
   },
   {
     quest: "why not?",
