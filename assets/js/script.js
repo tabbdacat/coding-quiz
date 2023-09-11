@@ -127,15 +127,9 @@ const clearHistoryBtn = document.querySelector("#clearHistoryBtn");
 
 submitScoreBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  console.log('clicked');
-  // displayHighScores();
 
-  localStorage.setItem("initials", initialInputEl);
-  localStorage.setItem("score", curScore);
   submitHighScores();
   updateHighScores(initialInputEl.value, JSON.parse(curScore.textContent));
-
-
 })
 
 function updateHighScores(initialInput, curScore) {
