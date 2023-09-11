@@ -48,14 +48,14 @@ let myQuestions = [
     answer: "B - push()",
   },
   {
-    quest: "why not?",
-    options: ["dunno", "cuz i'm right", "shrug", "ahhh"],
-    answer: "cuz i'm right",
+    quest: "What will be the output of this code?: console.log(1 + '2' + '2');",
+    options: ["122", "NaN", "5", "14"],
+    answer: "122",
   },
   {
-    quest: "whyyyyyyy?",
-    options: ["not sure", "cuz i'm right", "shrug", "ahhh"],
-    answer: "cuz i'm right",
+    quest: "What will be the output of the following code snippet? print(typeof(NaN));",
+    options: ["String", "Undefined", "Object", "Number"],
+    answer: "Number",
 
 
   }
