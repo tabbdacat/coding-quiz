@@ -49,13 +49,13 @@ let myQuestions = [
   },
   {
     quest: "What will be the output of this code?: console.log(1 + '2' + '2');",
-    options: ["122", "NaN", "5", "14"],
-    answer: "122",
+    options: ["A - 122", "B - NaN", "C - 5", "D - 14"],
+    answer: "A - 122",
   },
   {
     quest: "What will be the output of the following code snippet? print(typeof(NaN));",
-    options: ["String", "Undefined", "Object", "Number"],
-    answer: "Number",
+    options: ["A - String", "B - Undefined", "C - Object", "D - Number"],
+    answer: "D - Number",
 
 
   }
@@ -126,19 +126,22 @@ const clearHistoryBtn = document.querySelector("#clearHistoryBtn");
 
 
 submitScoreBtn.addEventListener("click", function (event) {
+  // prevent page refresh
   event.preventDefault();
-
+// calls high score function
   submitHighScores();
   updateHighScores(initialInputEl.value, JSON.parse(curScore.textContent));
 })
 
+ // input intials and score to local storage
 function updateHighScores(initialInput, curScore) {
   const result = { initials: initialInput, score: curScore };
 
   highScores.push(result);
+  // Sort high scores high to low
   highScores.sort((a, b) => b.score - a.score)
+  // keep 5 highest scores
   highScores.splice(5);
-  console.log(highScores);
   localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
@@ -149,13 +152,10 @@ function submitHighScores() {
   // creates variable for value input of initials entered, minus white spaces
   var initialText = initialInputEl.value.trim();
 
-  //   console.log(initialText,secondsLeft);
-
   // for (var i = 0; i < initialArr.length; i++) {
   //   // create variable for current initial in iteration
   //   var initial = InitialArr[i];
 
-  //   console.log(initial);
   // adds input to initial array
   initialArr.push(initialText);
   // creates list item
@@ -164,15 +164,11 @@ function submitHighScores() {
   li.textContent = "Score:" + curScore.textContent + "  Name:" + initialText;
   // places list item in high score list
   highScoreList.appendChild(li);
-
-  console.log(li);
 }
-
 
 clearHistoryBtn.addEventListener("click", function () {
   localStorage.clear();
 });
-
 
 // function init() {
 //   renderHighScores();
