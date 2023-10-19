@@ -12,10 +12,10 @@
 <body class="bg-success-subtle">
     <header class="row justify-content-center m-4">
         <h1 class="col-9">Coding Quiz</h1>
-    <div class="col-3 timer">Time: <span id="time">0</span></div>
+    <div class="col-3 timer">Time: <span id="time">60</span></div>
     <div id="start-screen">
-        <h3 class="m-5">Can you beat the current high score? You have 2 minutes to answer all questions. 
-            Each incorrect answer will drop your remaining time by 10 seconds.</h3>
+        <h3 class="m-5">Can you beat the current high score? You have 1 minute to answer all questions. 
+            You will be scored by your time remaining on the timer at the end of the quiz. Each incorrect answer will drop your remaining time by 10 seconds.</h3>
         <button class="btn btn-block btn-success w-50 shadow p-3 m-2 rounded" id="start">Start Quiz</button>
         <div class="scores"><a href="./highscores.html">View Highscores</a></div>
     </div>
@@ -43,7 +43,7 @@
         <button id="submit-score-btn">Submit</button>
     </div>
 
-    <div id="high-score-screen" class="">
+    <div id="high-score-display">
              <h2>High Scores</h2>            
             <ol id="high-score-list"></ol>
             <button id="clearHistoryBtn">Clear History</button>

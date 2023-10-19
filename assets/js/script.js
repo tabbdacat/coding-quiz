@@ -1,6 +1,7 @@
 let timeRemaining = document.querySelector(".timer");
 const startBtn = document.querySelector("#start");
 const startScreenEl = document.querySelector("#start-screen");
+const highScoreDisplayEl = document.querySelector("#high-score-display");
 const questionsEl = document.querySelector("#test");
 const endScreenEl = document.querySelector("#end-screen");
 // Selects element by id
@@ -13,7 +14,7 @@ let secondsLeft;
 
 startBtn.addEventListener("click", function () {
   // time for quiz
-  secondsLeft = 100;
+  secondsLeft = 60;
   // Sets interval in variable
   let timerInterval = setInterval(function () {
     // subtracting 1 from seconds left
@@ -24,21 +25,18 @@ startBtn.addEventListener("click", function () {
     if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to send message
-      sendMessage();
+      // Clears timer text 
+      timeRemaining.textContent = ""
 
     }
   }, 1000);
 
 
   startScreenEl.classList.add("hide");
+  highScoreDisplayEl.classList.add("hide");
   questionsEl.classList.remove("hide");
   displayQuestion(currentQuestionIndex);
 })
-
-function sendMessage() {
-  timeRemaining.textContent = "Time is up!"
-}
 
 // question list object
 let myQuestions = [
@@ -56,8 +54,6 @@ let myQuestions = [
     quest: "What will be the output of the following code snippet? print(typeof(NaN));",
     options: ["A - String", "B - Undefined", "C - Object", "D - Number"],
     answer: "D - Number",
-
-
   }
 ]
 
@@ -70,8 +66,6 @@ function displayQuestion(i) {
   optionBtns[2].textContent = myQuestions[i].options[2];
   optionBtns[3].textContent = myQuestions[i].options[3];
 }
-
-
 
 // const rightAnswer= document.querySelector("#right-answer");
 
@@ -111,11 +105,11 @@ optionBtns.forEach(function (x) {
 function endOfQuiz() {
   endScreenEl.classList.remove("hide");
   questionsEl.classList.add("hide");
+  highScoreDisplayEl.classList.remove("hide");
   curScore.textContent = secondsLeft;
   secondsLeft = 0;
 }
 
-const numHighScores = 10;
 const highScoreForm = document.querySelector("#high-score-form");
 const initialInputEl = document.querySelector("#initial-input");
 const submitScoreBtn = document.querySelector("#submit-score-btn");
@@ -161,13 +155,14 @@ function submitHighScores() {
   // creates list item
   var li = document.createElement("li");
   // setting text of the li to the current initial entered
-  li.textContent = "Score:" + curScore.textContent + "  Name:" + initialText;
+  li.textContent = "Score: " + curScore.textContent + "  Name: " + initialText;
   // places list item in high score list
   highScoreList.appendChild(li);
 }
 
 clearHistoryBtn.addEventListener("click", function () {
   localStorage.clear();
+  highScoreList.innerHTML = "";
 });
 
 // function init() {
