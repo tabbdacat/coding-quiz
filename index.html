@@ -16,8 +16,9 @@
     <div id="start-screen">
         <h3 class="m-5">Can you beat the current high score? You have 1 minute to answer all questions. 
             You will be scored by your time remaining on the timer at the end of the quiz. Each incorrect answer will drop your remaining time by 10 seconds.</h3>
-        <button class="btn btn-block btn-success w-50 shadow p-3 m-2 rounded" id="start">Start Quiz</button>
-        <div class="scores"><a href="./highscores.html">View Highscores</a></div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success btn-lg" id="start">Start Quiz</button>
+        </div>
     </div>
 </header>
     <div id="test" class="hide">
@@ -40,13 +41,13 @@
 
         </form>
         <p>Enter initials: <input type="text" id="initial-input" placeholder="Initials"/></p>
-        <button id="submit-score-btn">Submit</button>
+        <button class="btn btn-success btn-sm" id="submit-score-btn">Submit</button>
     </div>
 
     <div id="high-score-display">
              <h2>High Scores</h2>            
             <ol id="high-score-list"></ol>
-            <button id="clearHistoryBtn">Clear History</button>
+            <button class="btn btn-success btn-sm" id="clearHistoryBtn">Clear History</button>
      </div>
 
     <script src="./assets/js/script.js"></script>
