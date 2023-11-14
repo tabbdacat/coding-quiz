@@ -156,23 +156,6 @@ function updateHighScores(initialInput, curScore) {
     localStorage.setItem("highScores", JSON.stringify(highScores));
 }
 
-// function submitHighScores() {
-//   let initialArr = [];
-//   let scoreArr = [];
-//   highScoreList.innerHTML = "";
-//   // creates variable for value input of initials entered, minus white spaces
-//   var initialText = initialInputEl.value.trim();
-
-//   // adds input to initial array
-//   initialArr.push(initialText);
-//   // creates list item
-//   var li = document.createElement("li");
-//   // setting text of the li to the current initial entered
-//   li.textContent = "Score: " + curScore.textContent + "  Name: " + initialText;
-//   // places list item in high score list
-//   highScoreList.appendChild(li);
-// }
-
 // listen to button to clear high score history 
 clearHistoryBtn.addEventListener("click", function () {
   localStorage.clear();
