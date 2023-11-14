@@ -48,6 +48,7 @@ startBtn.addEventListener("click", function () {
     }
   }, 1000);
 
+  // change view for user
   startScreenEl.classList.add("hide");
   highScoreDisplayEl.classList.add("hide");
   questionsEl.classList.remove("hide");
@@ -141,7 +142,7 @@ submitScoreBtn.addEventListener("click", function (event) {
 // input intials and score to local storage
 function updateHighScores(initialInput, curScore) {
   const result = { initials: initialInput, score: curScore };
-
+// add result to highscores array
   highScores.push(result);
 
   var initialText = initialInputEl.value.trim();
@@ -162,7 +163,7 @@ clearHistoryBtn.addEventListener("click", function () {
   highScoreList.innerHTML = "";
 });
 
-
+// initial function to run on page load
 function init() {
   displayHighScores();
   startScreenEl.classList.remove("hide");
