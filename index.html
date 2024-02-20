@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Coding Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" \
-    rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
-    crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+
 <body class="bg-success-subtle">
     <header class="row justify-content-center m-4">
-        <h1 class="col-9">Coding Quiz</h1>
-    <div class="col-3 timer">Time: <span id="time">60</span></div>
-    <div id="start-screen">
-        <h3 class="m-5">Can you beat the current high score? You have 1 minute to answer all questions. 
-            You will be scored by your time remaining on the timer at the end of the quiz. Each incorrect answer will drop your remaining time by 10 seconds.</h3>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-success btn-lg" id="start">Start Quiz</button>
+        <h1 class="col-8 fs-2 fw-bolder border border-light-subtle border-4 p-3">Coding Quiz</h1>
+        <div class="col-4 fs-3 timer border border-light-subtle border-4 p-3">Time: <span id="time">60</span></div>
+        <div id="start-screen">
+            <h3 class="m-5 border border-light-subtle border-4 p-3">Can you beat the current high score? You have 1
+                minute to answer all questions.
+                You will be scored by your time remaining on the timer at the end of the quiz. Each incorrect answer
+                will drop your remaining time by 10 seconds.</h3>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-success btn-lg mb-3" id="start">Start Quiz</button>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
     <div id="test" class="hide">
         <h2 id="questions"></h2>
 
@@ -30,27 +33,31 @@
             <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionTwo"></button>
             <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionThree"></button>
             <button class="optionBtn col-6 shadow p-3 m-2 bg-body-tertiary rounded" id="optionFour"></button>
-            <h3 id="right-answer"  class="hide">That's Correct!</h3>
+            <h3 id="right-answer" class="hide">That's Correct!</h3>
             <h3 id="wrong-answer" class="hide">Wrong Answer!</h3>
         </div>
-            
-           
+
+
     </div>
-    <div id="end-screen" class="hide">
-        <h2>Quiz Complete!</h2>
-        <p>Your final score is <span id="cur-score"></span></p>
+    <div id="end-screen" class="hide m-4">
+        <h2 class="fs-4 fw-bolder my-3">Quiz Complete!</h2>
+        <p class="m-3">Your final score is <span class="fs-3 fw-bolder" id="cur-score"></span></p>
 
-        </form>
-        <p>Enter initials: <input type="text" id="initial-input" placeholder="Initials"/></p>
-        <button class="btn btn-success btn-sm" id="submit-score-btn">Submit</button>
+        <div class="my-3 border border-light-subtle border-4 p-3 w-50">
+            <p>Enter initials: <input type="text" class="form-control" id="initial-input" placeholder="Initials" /></p>
+            <button class="btn btn-success btn-sm m-3" id="submit-score-btn">Submit</button>
+        </div>
     </div>
 
-    <div id="high-score-display">
-             <h2>High Scores</h2>            
-            <ol id="high-score-list"></ol>
-            <button class="btn btn-success btn-sm" id="clearHistoryBtn">Clear History</button>
-     </div>
+    <div class="row justify-content-center m-4 border border-light-subtle border-4 w-50 p-3" id="high-score-display">
+        <h2 class="fs-4 fw-bolder mb-3 border border-light-subtle border-4 p-3">High Scores</h2>
+        <ol id="high-score-list"></ol>
+        <button class="btn btn-success btn-sm col-auto mt-3" id="clearHistoryBtn">Clear History</button>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
