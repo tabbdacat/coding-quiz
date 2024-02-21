@@ -37,14 +37,14 @@ startBtn.addEventListener("click", function () {
 
     // end quiz if timer runs out
     if (secondsLeft <= 0) {
-      console.log("im hit!");
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Clears timer text 
-      timeRemaining.textContent = "";
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Clears timer text 
+        timeRemaining.textContent = "";
       endScreenEl.classList.remove("hide");
       questionsEl.classList.add("hide");
       highScoreDisplayEl.classList.remove("hide");
+      endOfQuiz()
     }
   }, 1000);
 
@@ -112,8 +112,11 @@ optionBtns.forEach(function (x) {
 // change user view
 function endOfQuiz() {
   // set score to seconds remaining
-  curScore.textContent = secondsLeft;
+  if(secondsLeft <= 0) {
+    curScore.textContent = 0;
+  }
   if(secondsLeft > 0) {
+    curScore.textContent = secondsLeft;
     secondsLeft = 0;
   };
 }
@@ -121,8 +124,6 @@ function endOfQuiz() {
 function displayHighScores() {
   highScoreList.innerHTML = "";
   for (var i = 0; i < highScores.length; i++) {
-console.log(highScores);
-console.log(highScores[i].score)
 var li = document.createElement("li");
 li.textContent = "Score: " + highScores[i].score + "  Name: " + highScores[i].initials;
 // places list item in high score list
